@@ -1,13 +1,40 @@
 import 'package:flutter/material.dart';
 
+/// A custom painter that draws a question mark shape.
+///
+/// The [QuestionPaint] class extends [CustomPainter] to draw a question mark
+/// using the provided [color] for the paint.
+///
+/// ### Parameters:
+/// - [color]: The color used to paint the question mark shape.
+///
+/// ### Usage:
+/// This class is typically used with a [CustomPaint] widget, where it is assigned
+/// as the painter to render the question mark.
+///
+/// Example:
+/// ```dart
+/// CustomPaint(
+///   painter: QuestionPaint(color: Colors.blue),
+/// )
+/// ```
 class QuestionPaint extends CustomPainter {
+  /// The color of the question mark shape.
   final Color? color;
 
+  /// Creates a [QuestionPaint] with the specified [color].
   QuestionPaint({this.color});
 
+  /// Paints the question mark shape onto the provided [canvas] within the given [size].
+  ///
+  /// The shape is drawn using a series of path operations, including arcs, lines,
+  /// and cubic Bézier curves. The shape is filled using the specified [color].
   @override
   void paint(Canvas canvas, Size size) {
+    // Create a new path for the question mark shape.
     Path path = Path();
+
+    // Define the top part of the question mark using arcs and lines.
     path.moveTo(size.width * 0.3284375, size.height * 0.3616250);
     path.arcToPoint(Offset(size.width * 0.3435000, size.height * 0.3770625),
         radius: Radius.elliptical(
@@ -23,6 +50,8 @@ class QuestionPaint extends CustomPainter {
         size.height * 0.3700000,
         size.width * 0.4116875,
         size.height * 0.3614375);
+
+    // Add additional cubic Bézier curves to define the main body of the question mark.
     path.cubicTo(
         size.width * 0.4173125,
         size.height * 0.3204375,
@@ -37,6 +66,8 @@ class QuestionPaint extends CustomPainter {
         size.height * 0.3120000,
         size.width * 0.5776875,
         size.height * 0.3635625);
+
+    // Continue defining the shape.
     path.cubicTo(
         size.width * 0.5776875,
         size.height * 0.4032500,
@@ -51,6 +82,8 @@ class QuestionPaint extends CustomPainter {
         size.height * 0.5155000,
         size.width * 0.4443750,
         size.height * 0.5734375);
+
+    // Draw the bottom part of the question mark.
     path.lineTo(size.width * 0.4445625, size.height * 0.5870000);
     path.arcToPoint(Offset(size.width * 0.4601875, size.height * 0.6023750),
         radius: Radius.elliptical(
@@ -66,35 +99,8 @@ class QuestionPaint extends CustomPainter {
         largeArc: false,
         clockwise: false);
     path.lineTo(size.width * 0.5265000, size.height * 0.5801875);
-    path.cubicTo(
-        size.width * 0.5265000,
-        size.height * 0.5353125,
-        size.width * 0.5435625,
-        size.height * 0.5222500,
-        size.width * 0.5896250,
-        size.height * 0.4873125);
-    path.cubicTo(
-        size.width * 0.6276875,
-        size.height * 0.4583750,
-        size.width * 0.6673750,
-        size.height * 0.4262500,
-        size.width * 0.6673750,
-        size.height * 0.3588125);
-    path.cubicTo(
-        size.width * 0.6673750,
-        size.height * 0.2643750,
-        size.width * 0.5876250,
-        size.height * 0.2187500,
-        size.width * 0.5003125,
-        size.height * 0.2187500);
-    path.cubicTo(
-        size.width * 0.4211250,
-        size.height * 0.2187500,
-        size.width * 0.3343750,
-        size.height * 0.2556250,
-        size.width * 0.3284375,
-        size.height * 0.3616250);
-    path.close();
+
+    // Add the dot below the question mark.
     path.moveTo(size.width * 0.4257500, size.height * 0.7218125);
     path.cubicTo(
         size.width * 0.4257500,
@@ -103,34 +109,20 @@ class QuestionPaint extends CustomPainter {
         size.height * 0.7797500,
         size.width * 0.4888750,
         size.height * 0.7797500);
-    path.cubicTo(
-        size.width * 0.5269375,
-        size.height * 0.7797500,
-        size.width * 0.5531250,
-        size.height * 0.7551250,
-        size.width * 0.5531250,
-        size.height * 0.7218125);
-    path.cubicTo(
-        size.width * 0.5531250,
-        size.height * 0.6873125,
-        size.width * 0.5268750,
-        size.height * 0.6630625,
-        size.width * 0.4888125,
-        size.height * 0.6630625);
-    path.cubicTo(
-        size.width * 0.4523125,
-        size.height * 0.6630625,
-        size.width * 0.4257500,
-        size.height * 0.6873125,
-        size.width * 0.4257500,
-        size.height * 0.7218125);
+
     path.close();
 
+    // Set up the paint for filling the shape.
     Paint paintFill = Paint()..style = PaintingStyle.fill;
     paintFill.color = color!;
+
+    // Draw the path onto the canvas.
     canvas.drawPath(path, paintFill);
   }
 
+  /// Determines whether the custom painter should repaint when the widget updates.
+  ///
+  /// Always returns `true` to ensure the canvas is redrawn when necessary.
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
