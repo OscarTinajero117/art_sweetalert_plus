@@ -93,8 +93,9 @@ class ArtDialogState extends State<ArtDialog> {
         _artDialogArgs.title!,
         textAlign: _artDialogArgs.titleAlign,
         style: TextStyle(
-            color: _artDialogArgs.titleColor,
-            fontSize: _artDialogArgs.getTitleSize),
+            color: _artDialogArgs.titleColor ?? Theme.of(context).textTheme.titleLarge?.color,
+            fontSize: _artDialogArgs.getTitleSize,
+            fontWeight: FontWeight.w600),
       );
     }
 
@@ -120,7 +121,7 @@ class ArtDialogState extends State<ArtDialog> {
         _artDialogArgs.text!,
         textAlign: _artDialogArgs.textAlign,
         style: TextStyle(
-          color: _artDialogArgs.textColor,
+          color: _artDialogArgs.textColor ?? Theme.of(context).textTheme.bodyMedium?.color,
           fontSize: _artDialogArgs.getTextSize,
         ),
       );
@@ -272,10 +273,11 @@ class ArtDialogState extends State<ArtDialog> {
     return Dialog(
       backgroundColor: Colors.transparent,
       elevation: _artDialogArgs.dialogElevation,
+      alignment: _artDialogArgs.dialogAlignment,
       child: SingleChildScrollView(
         child: Container(
           padding: _artDialogArgs.dialogPadding,
-          decoration: _artDialogArgs.getDialogDecoration(),
+          decoration: _artDialogArgs.getDialogDecoration(context),
           child: Column(
             mainAxisSize: _artDialogArgs.dialogMainAxisSize,
             children: [
