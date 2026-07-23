@@ -1,13 +1,12 @@
 name: art_sweetalert_plus
 description: "A beautiful, responsive, customizable, accessible replacement, easy use for flutter popup boxes. Both supported ios and android."
-version: 0.0.2
+version: 0.1.1
 homepage: https://github.com/OscarTinajero117/art_sweetalert_plus
-repository: https://github.com/OscarTinajero117/art_sweetalert_plus.git
+repository: https://github.com/OscarTinajero117/art_sweetalert_plus
 issues: https://github.com/OscarTinajero117/art_sweetalert_plus/issues
 
 environment:
-  sdk: ^3.6.0
-  flutter: ">=1.17.0"
+  sdk: ^3.12.0
 
 dependencies:
   flutter:
@@ -16,6 +15,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
