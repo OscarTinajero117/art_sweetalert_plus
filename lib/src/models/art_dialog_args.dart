@@ -10,10 +10,10 @@ class ArtDialogArgs {
   final String? text;
 
   /// The color of the title
-  final Color titleColor;
+  final Color? titleColor;
 
   /// The color of the text
-  final Color textColor;
+  final Color? textColor;
 
   /// Whether to show the cancel button
   final bool showCancelBtn;
@@ -87,7 +87,7 @@ class ArtDialogArgs {
   final EdgeInsets dialogPadding;
 
   /// The decoration of the dialog
-  Decoration? dialogDecoration;
+  final Decoration? dialogDecoration;
 
   /// The elevation of the dialog
   final double dialogElevation;
@@ -107,8 +107,7 @@ class ArtDialogArgs {
   /// The custom columns of the dialog
   final List<Widget>? customColumns;
 
-  /// The dialog decoration
-  late Decoration _dialogDecoration;
+
 
   ArtDialogArgs(
       {this.sizeSuccessIcon = 50.0,
@@ -120,8 +119,8 @@ class ArtDialogArgs {
       this.getTextSize = 14.0,
       this.text,
       this.title,
-      this.titleColor = const Color.fromRGBO(89, 89, 89, 1),
-      this.textColor = const Color.fromRGBO(84, 84, 84, 1),
+      this.titleColor,
+      this.textColor,
       this.titleAlign = TextAlign.center,
       this.textAlign = TextAlign.center,
       this.showCancelBtn = false,
@@ -140,22 +139,26 @@ class ArtDialogArgs {
       this.dialogPadding = const EdgeInsets.all(20),
       this.dialogDecoration,
       this.decorationImage,
-      this.dialogElevation = 0.0,
+      this.dialogElevation = 8.0,
       this.dialogMainAxisSize = MainAxisSize.min,
       this.dialogAlignment = Alignment.center,
-      this.barrierColor = const Color.fromRGBO(0, 0, 0, 0.4)}) {
-    if (dialogDecoration != null) {
-      _dialogDecoration = dialogDecoration!;
-    } else {
-      _dialogDecoration = BoxDecoration(
-          image: decorationImage,
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(4.0)));
-    }
-  }
+      this.barrierColor = const Color.fromRGBO(0, 0, 0, 0.4)});
 
-  /// Get the dialog decoration
-  Decoration getDialogDecoration() {
-    return _dialogDecoration;
+  /// Get the dialog decoration adapted to the current theme
+  Decoration getDialogDecoration(BuildContext context) {
+    if (dialogDecoration != null) {
+      return dialogDecoration!;
+    }
+    return BoxDecoration(
+        image: decorationImage,
+        color: Theme.of(context).dialogBackgroundColor,
+        borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 8.0,
+            offset: Offset(0, 4),
+          )
+        ]);
   }
 }
