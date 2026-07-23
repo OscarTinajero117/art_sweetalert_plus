@@ -42,6 +42,14 @@ class _ArtButtonState extends State<ArtButton> {
 
   /// Initializes the button columns with the text widget.
   void initBtnColumns() {
+    if (widget.btnIcon != null) {
+      btnColumns.add(
+        Container(
+          margin: const EdgeInsets.only(right: 8.0),
+          child: widget.btnIcon,
+        )
+      );
+    }
     // Creates the text widget for the button
     Widget button = Text(
       widget.btnText, // Button text from the widget
@@ -55,7 +63,9 @@ class _ArtButtonState extends State<ArtButton> {
     // Adds the text widget wrapped in a GestureDetector for tap detection
     btnColumns.add(GestureDetector(
       onTap: () {
-        widget.onTab!(); // Calls the onTap callback when the button is tapped
+        if (widget.onTab != null) {
+          widget.onTab!(); // Calls the onTap callback when the button is tapped
+        }
       },
       child: button,
     ));
@@ -69,20 +79,21 @@ class _ArtButtonState extends State<ArtButton> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        widget.onTab!(); // Calls the onTap callback when the button is tapped
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(
-            vertical: 6, horizontal: 12), // Padding inside the button
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(
-                Radius.circular(4.0)), // Rounded corners for the button
-            color: widget.bgColor), // Background color of the button
-        child: IgnorePointer(
-          // Disables interactions with children (e.g., the text inside the button)
-          child: Row(mainAxisSize: MainAxisSize.min, children: btnColumns),
+    return Material(
+      color: widget.bgColor,
+      borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () {
+          if (widget.onTab != null) {
+            widget.onTab!();
+          }
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: IgnorePointer(
+            child: Row(mainAxisSize: MainAxisSize.min, children: btnColumns),
+          ),
         ),
       ),
     );
