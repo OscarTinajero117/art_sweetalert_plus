@@ -151,7 +151,7 @@ class ArtDialogArgs {
     }
     return BoxDecoration(
         image: decorationImage,
-        color: Theme.of(context).dialogBackgroundColor,
+        color: Theme.of(context).dialogTheme.backgroundColor ?? Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.all(Radius.circular(16.0)),
         boxShadow: const [
           BoxShadow(

@@ -25,7 +25,7 @@ class ArtSweetAlertPlus {
   /// - Barrier color: The background color behind the dialog is customizable via [artDialogArgs.barrierColor].
   /// - Transition duration: The duration of the dialog's transition is set to 600 milliseconds.
   /// - Transition builder: The dialog has a scale and fade transition effect for smooth appearance and disappearance.
-  static show({
+  static Future<dynamic> show({
     required BuildContext
         context, // The context in which the dialog will be shown.
     required ArtDialogArgs
