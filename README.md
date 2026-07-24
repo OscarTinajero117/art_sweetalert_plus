@@ -52,6 +52,35 @@ ArtSweetAlertPlus.show(
 
 ```
 
+## A warning message
+
+![Warning message](https://github.com/OscarTinajero117/art_sweetalert_plus/raw/main/images/warning-message.gif)
+
+```dart
+ArtSweetAlertPlus.show(
+    context: context,
+    artDialogArgs: ArtDialogArgs(
+        type: ArtSweetAlertPlusType.warning,
+        title: "A warning message!",
+        text: "Show a warning message with an icon"
+    )
+);
+```
+
+## An information message
+
+![Information message](https://github.com/OscarTinajero117/art_sweetalert_plus/raw/main/images/information-message.gif)
+
+```dart
+ArtSweetAlertPlus.show(
+    context: context,
+    artDialogArgs: ArtDialogArgs(
+        type: ArtSweetAlertPlusType.info,
+        title: "Information",
+        text: "Show an information message with an icon"
+    )
+);
+```
 ## A dialog with three buttons
 
 ![Dialog message](https://github.com/OscarTinajero117/art_sweetalert_plus/raw/main/images/dialog-message.gif)
