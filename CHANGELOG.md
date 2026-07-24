@@ -1,12 +1,5 @@
 # CHANGELOG
 
-## 0.1.1
-
-* **Example Application:** Completely redesigned the UI/UX of the example application to adhere to modern design principles, utilizing Material Design 3 cards, adaptive theming, and ripple effects.
-* **Alert Coverage:** Ensured that every alert type (`success`, `warning`, `danger`, `question`, `info`) has a dedicated demonstration button in the example application.
-* **Testing:** Added acceptance and integration tests within the example application to automatically verify the display and dismissal of all alert types.
-* **Documentation:** Enhanced the documentation across the repository to maintain a formal, professional tone in English.
-
 ## 0.1.0
 
 * **UI/UX Improvements:**
@@ -17,6 +10,9 @@
   * Typography improvements: Titles are now slightly bolder (`FontWeight.w600`).
 * **Testing:** Added comprehensive widget tests and integration tests.
 * **Documentation:** Improved overall code documentation and added `AGENTS.md` for AI agent guidelines.
+* **Example Application:** Completely redesigned the UI/UX of the example application to adhere to modern design principles, utilizing Material Design 3 cards, adaptive theming, and ripple effects.
+* **Alert Coverage:** Ensured that every alert type (`success`, `warning`, `danger`, `question`, `info`) has a dedicated demonstration button in the example application.
+* **Testing:** Added acceptance and integration tests within the example application to automatically verify the display and dismissal of all alert types.
 
 ## 0.0.2
 
