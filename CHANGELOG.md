@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.1
+
+* Feat: update ArtSweetAlert.show return type and improve dialog background color fallback logic
+
 ## 0.1.0
 
 * **UI/UX Improvements:**
